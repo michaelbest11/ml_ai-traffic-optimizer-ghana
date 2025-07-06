@@ -1,11 +1,16 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import "./index.css";
-import App from "./page";
+// app/layout.tsx
+import "./globals.css";
+import { ReactNode } from "react";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-);
+export const metadata = {
+  title: "Traffic Optimization Dashboard",
+  description: "AI-powered traffic analysis and prediction for Ghana-Accra & Kumasi",
+};
+
+export default function RootLayout({ children }: { children: ReactNode }) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  );
+}
