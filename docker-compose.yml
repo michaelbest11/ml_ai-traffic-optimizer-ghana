@@ -13,16 +13,19 @@ services:
     volumes:
       - ./backend:/app
     depends_on:
-      - mongo
+      - mongodb
     restart: always
 
-  mongo:
+  mongodb:
     image: mongo:6
     container_name: mongodb
     ports:
       - "27017:27017"
     volumes:
       - mongo_data:/data/db
+      - ./mongo-init:/docker-entrypoint-initdb.d  # ← this allows seeding
+    environment:
+      MONGO_INITDB_DATABASE: traffic_db
     restart: always
 
 volumes:

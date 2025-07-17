@@ -150,7 +150,7 @@ app.add_middleware(
 @app.on_event("startup")
 async def startup():
     logging.info("Server is starting...")
-    if db:
+    if db is not None:
         await db.traffic_data.create_index("intersection_id")
     try:
         ml_engine.train_models("Accra")
